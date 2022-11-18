@@ -62,23 +62,48 @@ public class PersistenceHandler extends PlayerPersistenceInterface {
      * @return a String containing the player's name and ID
      * @return NULL if no record found
      */
-    @Override
-    //public List<Player> getPlayers() {
-    public String getPlayers() {
-        String sql = "SELECT id, codename "
-                + "FROM player "
-                + "WHERE id = ?";
+    public static ObservableList<Player> getGreenTeamPlayer(int playerId) {
+        ObservableList<Player> playerList = null;
         try {
+            String sql = "SELECT id, codename "
+                    + "FROM green_team "
+                    + "WHERE id = ?";
             PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1,playerId);
             ResultSet sqlReturnValues = stmt.executeQuery();
-
-            if (sqlReturnValues != null){
-                return sqlReturnValues.toString();
+            if(sqlReturnValues != null) {
+                playerList = getPlayerList(sqlReturnValues);
             }
-        } catch (SQLException throwable) {
+
+        } catch (SQLException | ClassNotFoundException throwable) {
             throwable.printStackTrace();
         }
-        return null;
+        return playerList;
+    }
+
+
+    /*
+     * Retrieves a player's data from database
+     * @return a String containing the player's name and ID
+     * @return NULL if no record found
+     */
+    public static ObservableList<Player> getRedTeamPlayer(int playerId) {
+        ObservableList<Player> playerList = null;
+        try {
+            String sql = "SELECT id, codename "
+                    + "FROM red_team "
+                    + "WHERE id = ?";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1,playerId);
+            ResultSet sqlReturnValues = stmt.executeQuery();
+            if(sqlReturnValues != null) {
+                playerList = getPlayerList(sqlReturnValues);
+            }
+
+        } catch (SQLException | ClassNotFoundException throwable) {
+            throwable.printStackTrace();
+        }
+        return playerList;
     }
 
     /*

@@ -9,10 +9,12 @@
 
 package com.example.project;
 
+import javafx.collections.ObservableList;
+
 public abstract class PlayerPersistenceInterface
 {
 
-        public String getPlayers() {
+        public static ObservableList<Player> getGreenTeamPlayer(int playerId) {
                 return null;
         }
 
