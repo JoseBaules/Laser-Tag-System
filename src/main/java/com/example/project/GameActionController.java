@@ -10,6 +10,7 @@
  * */
 
 package com.example.project;
+
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,12 +26,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
+
 public class GameActionController implements Initializable {
 
     static int i;
@@ -42,27 +43,37 @@ public class GameActionController implements Initializable {
     public static Label static_label;
 
     PlayerPersistenceInterface persistenceHandler = PersistenceHandler.getInstance();
-
+    Scene2Controller scene2Controller = new Scene2Controller();
+    TrafficGenerator trafficGenerator = new TrafficGenerator();
     private Stage stage;
 
     private Scene scene;
 
     private Parent root;
 
+    ObservableList<Player> redPlayerData;
+
+    ObservableList<Player> greenPlayerData;
+
     @FXML
-    private TableView RedTeamTable;
+    public TableView RedTeamTable;
     @FXML
     private TableColumn<Player, Integer> redIdColumn;
     @FXML
     private TableColumn<Player, String>  redCodeNameColumn;
 
     @FXML
-    private TableView GreenTeamTable;
+    public TableView GreenTeamTable;
     @FXML
     private TableColumn<Player, Integer> greenIdColumn;
     @FXML
     private TableColumn<Player, String>  greenCodeNameColumn;
 
+
+    @FXML
+    public TableView game_action;
+    @FXML
+    private TableColumn<Player, String> actionColumn;
 
     @FXML
     void addContinue(ActionEvent event) throws IOException {
@@ -137,6 +148,7 @@ public class GameActionController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
 
+
         static_label = label;
 
         static_label.setText("");
@@ -156,6 +168,51 @@ public class GameActionController implements Initializable {
         greenIdColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
         greenCodeNameColumn.setCellValueFactory(cellData -> cellData.getValue().codenameProperty());
 
+        //Map<String, Object> redIdMap = new HashMap<>();
+        //You can use for loop instead to make a map of String, Integer.
+        //IntStream.rangeClosed(0, 14).forEach(i -> redIdMap.put(i +"", redPlayerData.get(i).getId()));//Map of 10 numbers.
+
+
+        try {
+            System.out.println("Calling methods from trafficGenerator - " + redPlayerData.get(0).getId());
+            List<String> IdAsString = new ArrayList<>();
+            for(int i = 0; i < redPlayerData.size(); i++) {
+                IdAsString.add(String.valueOf(redPlayerData.get(i).getId()));
+            }
+            List<String> keys = trafficGenerator.getRandomKeys(IdAsString);
+            String allKeys = trafficGenerator.combineKeys(keys, ":");
+            System.out.println("Please return allKeys from traffic generator");
+            System.out.println(allKeys);
+
+            System.out.println("GameActionController: Inside try block");
+
+            new EchoServer().start();
+            System.out.println("Server Started");
+
+            EchoClient client = new EchoClient();
+            System.out.println("Client Created ");
+
+           // String echo = client.sendEcho("hello server");
+            //Sending message to server for counter 10
+            String echo;
+            for(int counter=0; counter<10; counter++) {
+                echo = client.sendEcho(allKeys);
+                System.out.println("hello server: " + echo);
+            }
+
+            //echo = client.sendEcho("2:3");
+
+            //System.out.println(echo.equals("hello server"));
+            //System.out.println(echo.equals("1:2"));
+           // actionColumn.setCellValueFactory(cellData -> finalEcho);
+            //client.sendEcho("end");
+            client.close();
+
+        } catch (Exception exception) {
+            System.out.println("[-] UDPBaseServer has encountered an exception:");
+            exception.printStackTrace();
+        }
+
     }
 
 
@@ -164,12 +221,12 @@ public class GameActionController implements Initializable {
     private void searchAllPlayers() throws SQLException, ClassNotFoundException {
         try {
             //Get all red team Players information
-            ObservableList<Player> redPlayerData = PersistenceHandler.searchRedPlayers();
+            redPlayerData = PersistenceHandler.searchRedPlayers();
             //Populate red team Players on TableView
             populateRedPlayers(redPlayerData);
 
             //Get all green team Players information
-            ObservableList<Player> greenPlayerData = PersistenceHandler.searchGreenPlayers();
+            greenPlayerData = PersistenceHandler.searchGreenPlayers();
             //Populate green team Players on TableView
             populateGreenPlayers(greenPlayerData);
 
@@ -228,6 +285,7 @@ public class GameActionController implements Initializable {
 //        stage.setScene(scene);
 //
 //        stage.show();
+
     }
     public void ViewGame (ActionEvent event) throws IOException
     {
