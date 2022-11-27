@@ -41,10 +41,7 @@ public class GameActionController implements Initializable {
 
     static int i;
     static Timer t;
-
-//    static int redScoreV = 0;
-//    static int greenScoreV =0;
-    static int dummyTimer = 5;
+    static int dummyTimer = 3;
     static ArrayList<String> actions = new ArrayList<String>();
     @FXML
     private Label action1;
@@ -94,8 +91,6 @@ public class GameActionController implements Initializable {
     @FXML
     private TableColumn<Player, Integer> greenPoints;
 
-
-
     /*@note: the individual player scores are stored in these hash maps in the format -> playerID:score
      *       these are static and modified by the server
      *       total team score can be computed by adding all values
@@ -123,7 +118,7 @@ public class GameActionController implements Initializable {
     TrafficGenerator trafficGenerator = new TrafficGenerator();
 
     // create a alert
-    Alert a = new Alert(Alert.AlertType.NONE);
+    Alert alert = new Alert(Alert.AlertType.NONE);
 
     private Stage stage;
 
@@ -154,7 +149,7 @@ public class GameActionController implements Initializable {
 
     }
     public static void startTimer() {
-        final int MIN = 6;
+        final int MIN = 0;
         final int SEC = 60;
         final int[] num = {MIN};
         Timer timer = new Timer();
@@ -186,7 +181,12 @@ public class GameActionController implements Initializable {
                                  }
                                  if (count[0] == 29 && num[0] == 0)
                                  {
-                                     //ALERT: Time's running out
+                                     Alert a = new Alert(Alert.AlertType.NONE);
+                                     a.setAlertType(Alert.AlertType.WARNING);
+                                     // set content text
+                                     a.setContentText("30 Seconds Gaming Time Remaining\n");
+                                     // show the dialog
+                                     a.show();
                                      static_label.setTextFill(Color.RED);
                                  }
 
@@ -284,8 +284,8 @@ public class GameActionController implements Initializable {
         static_greenScore = greenScore;
         static_greenScore.setText("0000");
 
-//        displayActions();
-        startTimer();
+
+//        startTimer();
 
 
         try {
@@ -330,6 +330,7 @@ public class GameActionController implements Initializable {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+        startTimer();
         displayActions();
     }
     @FXML
@@ -498,22 +499,15 @@ public class GameActionController implements Initializable {
             }
             if(dummyTimer == 0) {
                 // set alert type
-                a.setAlertType(Alert.AlertType.WARNING);
+                alert.setAlertType(Alert.AlertType.WARNING);
                 // set content text
-                a.setContentText("GAME OVER: All ROUNDS ARE ALREADY PLAYED!!!!\n");
+                alert.setContentText("GAME OVER: All ROUNDS ARE ALREADY PLAYED!!!!\n");
                 // show the dialog
-                a.show();
+                alert.show();
             }
 
 
-            if(dummyTimer == 0) {
-                // set alert type
-                a.setAlertType(Alert.AlertType.WARNING);
-                // set content text
-                a.setContentText("GAME OVER: All ROUNDS ARE ALREADY PLAYED!!!!\n");
-                // show the dialog
-                a.show();
-            }
+
 
         } catch (Exception exception) {
             System.out.println("[-] UDPBaseServer has encountered an exception:");

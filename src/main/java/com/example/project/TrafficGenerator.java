@@ -25,44 +25,42 @@ public class TrafficGenerator {
         return actionPlayersKey;
     }
 
+
     public static String generateCustomUserKeys(List<String> shooterKeys, List<String> targetKeys) {
         String customUserKey = "";
         boolean badInputFlag = false;
         do {
             try {
-                Scanner scUserShooterPlayerChoice = new Scanner(System.in);
-                Scanner scUserTargetPlayerChoice = new Scanner(System.in);
+                Scanner sc = new Scanner(System.in);
                 String userShooterPlayerChoice ="";
                 String userTargetPlayerChoice ="";
                 badInputFlag = false;
-
-
                 //get specific players
-                System.out.println("\n[ LOG ] ----- SELECT A SHOOTER PLAYER ID FROM : " + shooterKeys);
-                userShooterPlayerChoice = scUserShooterPlayerChoice.nextLine();
+                System.out.println("[ LOG ] ----- SELECT A SHOOTER PLAYER ID FROM : " + shooterKeys);
+                userShooterPlayerChoice = sc.nextLine();
                 while(shooterKeys.contains(userShooterPlayerChoice) == false){
-                    System.out.println("\n[ LOG ] ----- MAKE SURE THE ID IS IN : " + shooterKeys);
-                    userShooterPlayerChoice = scUserShooterPlayerChoice.nextLine();
+                    System.out.println("[ LOG ] ----- MAKE SURE THE ID IS IN : " + shooterKeys);
+                    userShooterPlayerChoice = sc.nextLine();
                 }
 
-                System.out.print("\n[ LOG ] ----- SELECT A TARGET PLAYER ID FROM : " + targetKeys);
-                userTargetPlayerChoice = scUserTargetPlayerChoice.nextLine();
+                System.out.println("[ LOG ] ----- SELECT A TARGET PLAYER ID FROM : " + targetKeys);
+                userTargetPlayerChoice = sc.nextLine();
                 while(targetKeys.contains(userTargetPlayerChoice) == false){
-                    System.out.print("[ LOG ] ----- MAKE SURE THE ID IS IN : " + targetKeys);
-                    userTargetPlayerChoice = scUserTargetPlayerChoice.nextLine();
+                    System.out.println("[ LOG ] ----- MAKE SURE THE ID IS IN : " + targetKeys);
+                    userTargetPlayerChoice = sc.nextLine();
                 }
 
                 customUserKey = userShooterPlayerChoice + ":" + userTargetPlayerChoice;
-
             } catch (InputMismatchException e) {
                 System.out.print("[ LOG ] ----- PLEASE ENTER A NUMBER");
                 badInputFlag = true;
-
             }
         }
         while(badInputFlag);
         return customUserKey;
     }
+
+
 
 }
 
