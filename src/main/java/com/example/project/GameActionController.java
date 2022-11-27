@@ -305,6 +305,8 @@ public class GameActionController implements Initializable {
         redPoints.setCellValueFactory(new PropertyValueFactory<Player,Integer>("score"));
 
 
+
+
         greenIdColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
         greenCodeNameColumn.setCellValueFactory(cellData -> cellData.getValue().codenameProperty());
         greenPoints.setCellValueFactory(new PropertyValueFactory<Player,Integer>("score"));
@@ -516,19 +518,6 @@ public class GameActionController implements Initializable {
                 // show the dialog
                 a.show();
             }
-//            Label labels[];
-//
-//            labels = new Label[]
-//                    {
-//                            static_action1,static_action2,static_action3,static_action4,static_action5,static_action6,static_action7,static_action8,static_action9,static_action10
-//                    };
-//
-//            for (int i=0;i< actions.size();i++)
-//            {
-//                labels[i].setText(actions.get(i));
-//            }
-//            static_action1.setText(actions.get(0));
-//            static_action2.setText(actions.get(1));
 
 
             if(dummyTimer == 0) {
@@ -597,8 +586,23 @@ public class GameActionController implements Initializable {
 
         }
 
-        static_redScore.setText(String.valueOf(redScoreV));
-        static_greenScore.setText(String.valueOf(greenScoreV));
+        if (redScoreV > greenScoreV)
+        {
+            static_redScore.setText(String.valueOf(redScoreV));
+            static_greenScore.setText(String.valueOf(greenScoreV));
+            static_greenScore.setTextFill(Color.WHITE);
+            static_redScore.setTextFill(Color.RED);
+        }
+        else
+        {
+            static_greenScore.setText(String.valueOf(greenScoreV));
+            static_redScore.setText(String.valueOf(redScoreV));
+            static_redScore.setTextFill(Color.WHITE);
+            static_greenScore.setTextFill(Color.RED);
+        }
+
+        //static_redScore.setText(String.valueOf(redScoreV));
+        //static_greenScore.setText(String.valueOf(greenScoreV));
 
     }
 
