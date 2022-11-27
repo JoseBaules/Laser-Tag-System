@@ -225,12 +225,7 @@ public class GameActionController implements Initializable {
                                  }
                                  else
                                  {
-
-                                     System.out.println("FROM SETTINGLABELS: "+i);
                                      labels[i].setText(actions.get(i));
-//                                     static_redScore.setText(String.valueOf(redScoreV));
-//                                     static_greenScore.setText(String.valueOf(greenScoreV));
-
                                      i++;
                                  }
 
@@ -307,6 +302,7 @@ public class GameActionController implements Initializable {
 
 
 
+
         greenIdColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
         greenCodeNameColumn.setCellValueFactory(cellData -> cellData.getValue().codenameProperty());
         greenPoints.setCellValueFactory(new PropertyValueFactory<Player,Integer>("score"));
@@ -335,8 +331,6 @@ public class GameActionController implements Initializable {
             throw new RuntimeException(e);
         }
         displayActions();
-
-
     }
     @FXML
     private void searchAllPlayers() throws SQLException, ClassNotFoundException {
@@ -356,7 +350,6 @@ public class GameActionController implements Initializable {
             throw e;
         }
     }
-
     //Populate Player
     @FXML
     private void populatePlayer (Player player) throws ClassNotFoundException {
@@ -367,7 +360,6 @@ public class GameActionController implements Initializable {
         //Set items to the Table
         RedTeamTable.setItems(redTeamData);
     }
-
     //Populate Red team Players for TableView
     @FXML
     private void populateRedPlayers (ObservableList<Player> redTeamData) throws ClassNotFoundException {
@@ -381,18 +373,12 @@ public class GameActionController implements Initializable {
         //Set items to the green_team Table
         GreenTeamTable.setItems(greenTeamData);
     }
-
     public GameActionController() {
     }
-
     @FXML
-
     public void EditGame (ActionEvent event) throws IOException
     {
-
     }
-
-
     //TODO: to be implemented in next Sprint
     @FXML
     public void StartGame (ActionEvent event) throws IOException
@@ -528,21 +514,7 @@ public class GameActionController implements Initializable {
                 // show the dialog
                 a.show();
             }
-            // System.exit(0);
 
-            //PersistenceHandler persistenceHandler = PersistenceHandler.getInstance();
-            /*if (persistenceHandler.deletingAllRows_Green()) {
-                System.out.println("Green Player deleted from database!!");
-            } else {
-                System.out.println("Error while deleting player into database!!");
-            }
-
-            if (persistenceHandler.deletingAllRows_Red()) {
-                System.out.println("Red Player inserted into database!!");
-            } else {
-                System.out.println("Error while inserting player into database!!");
-            }
-*/
         } catch (Exception exception) {
             System.out.println("[-] UDPBaseServer has encountered an exception:");
             exception.printStackTrace();
@@ -600,9 +572,6 @@ public class GameActionController implements Initializable {
             static_redScore.setTextFill(Color.WHITE);
             static_greenScore.setTextFill(Color.RED);
         }
-
-        //static_redScore.setText(String.valueOf(redScoreV));
-        //static_greenScore.setText(String.valueOf(greenScoreV));
 
     }
 
