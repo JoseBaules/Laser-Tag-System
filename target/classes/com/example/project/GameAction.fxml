@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="597.0" prefWidth="1132.0" scaleShape="false" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.GameActionController">
+<BorderPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="597.0" prefWidth="1132.0" scaleShape="false" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project.GameActionController">
    <left>
       <Pane prefHeight="553.0" prefWidth="542.0" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER">
          <children>
@@ -119,8 +119,8 @@
                   </VBox>
                </content>
             </ScrollPane>
-            <Text fill="WHITE" layoutX="241.0" layoutY="456.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: monospaced; -fx-font-weight: bold;" text="Total Points:" />
-            <Text fill="WHITE" layoutX="943.0" layoutY="461.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: monospaced; -fx-font-weight: bold;" text="Total Points:" />
+            <Text fill="WHITE" layoutX="220.0" layoutY="458.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: monospaced; -fx-font-weight: bold;" text="Total Points:" />
+            <Text fill="WHITE" layoutX="923.0" layoutY="463.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: monospaced; -fx-font-weight: bold;" text="Total Points:" />
             <Label layoutX="549.0" layoutY="188.0" />
             <Label id="log-label" layoutX="531.0" layoutY="438.0" stylesheets="@paneStyleSheet.css" text="LOG" />
          </children>
@@ -135,7 +135,7 @@
                </font>
             </Button>
             <Button layoutX="161.0" layoutY="17.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="163.0" stylesheets="@buttonStyleSheet.css" text="F2 Game Parameters" />
-            <Button layoutX="954.0" layoutY="19.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="146.0" stylesheets="@buttonStyleSheet.css" text="F12 Clear Game" />
+            <Button layoutX="954.0" layoutY="19.0" mnemonicParsing="false" onAction="#closeGame" prefHeight="24.0" prefWidth="146.0" stylesheets="@buttonStyleSheet.css" text="F12 Close Game" />
             <Button layoutX="815.0" layoutY="18.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="119.0" stylesheets="@buttonStyleSheet.css" text="F8 View Game" />
             <Button layoutX="672.0" layoutY="18.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="119.0" stylesheets="@buttonStyleSheet.css" text="F10 Flick Sync" />
             <Button layoutX="342.0" layoutY="17.0" mnemonicParsing="false" stylesheets="@buttonStyleSheet.css" text="F4 PreEntered Games" />

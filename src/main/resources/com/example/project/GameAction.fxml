@@ -135,7 +135,7 @@
                </font>
             </Button>
             <Button layoutX="161.0" layoutY="17.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="163.0" stylesheets="@buttonStyleSheet.css" text="F2 Game Parameters" />
-            <Button layoutX="954.0" layoutY="19.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="146.0" stylesheets="@buttonStyleSheet.css" text="F12 Clear Game" />
+            <Button layoutX="954.0" layoutY="19.0" mnemonicParsing="false" onAction="#closeGame" prefHeight="24.0" prefWidth="146.0" stylesheets="@buttonStyleSheet.css" text="F12 Close Game" />
             <Button layoutX="815.0" layoutY="18.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="119.0" stylesheets="@buttonStyleSheet.css" text="F8 View Game" />
             <Button layoutX="672.0" layoutY="18.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="119.0" stylesheets="@buttonStyleSheet.css" text="F10 Flick Sync" />
             <Button layoutX="342.0" layoutY="17.0" mnemonicParsing="false" stylesheets="@buttonStyleSheet.css" text="F4 PreEntered Games" />
