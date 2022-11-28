@@ -41,7 +41,7 @@ public class GameActionController implements Initializable {
 
     static int i;
     static Timer t;
-    static int dummyTimer = 3;
+    static int dummyTimer = 5;
     static ArrayList<String> actions = new ArrayList<String>();
     @FXML
     private Label action1;
@@ -149,7 +149,7 @@ public class GameActionController implements Initializable {
 
     }
     public static void startTimer() {
-        final int MIN = 0;
+        final int MIN = 6;
         final int SEC = 60;
         final int[] num = {MIN};
         Timer timer = new Timer();
