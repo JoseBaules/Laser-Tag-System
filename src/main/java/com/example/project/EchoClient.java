@@ -26,7 +26,7 @@ public class EchoClient {
         socket.receive(packet);
         String received = new String(
                 packet.getData(), 0, packet.getLength());
-        System.out.println("Inside Echo Client: received - "+received);
+
         return received;
     }
 

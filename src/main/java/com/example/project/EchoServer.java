@@ -19,18 +19,7 @@ public class EchoServer extends Thread {
     private int targetScore = 0;
 
 
-    //global var to store green codename and individual score
-    /*
-     * id1: score_vale
-     * id2: score_value
-     *
-     * */
-    //global var red player codename and individual score
-    /*
-     * id1: score_vale
-     * id2: score_value
-     *
-     * */
+
     public static String   to_print;
 
     PlayerPersistenceInterface persistenceHandler = PersistenceHandler.getInstance();
@@ -57,13 +46,12 @@ public class EchoServer extends Thread {
             packet = new DatagramPacket(buf, buf.length, address, port);
             //String received= new String(packet.getData(), 0, packet.getLength()); //convert packet to string
             String received = this.data(buf).toString().replaceAll(" ", "");
-            System.out.println("\n[ LOG ] ----- Inside server run method ---received - "+ received );
+
 
 
             //if UDP protocol is not stopped, keep processing packets
-            //TODO: strip garbage characters in received string
+
             if (!received.contains("end")) {
-                System.out.println("[ LOG ] ----- Calling processData from server run method" );
                 processData(received);
             }
 
@@ -86,15 +74,11 @@ public class EchoServer extends Thread {
 
     private String processData(String data){
 
-        //TODO: fix bug of bytes getting part of the last string sent
 
         String[] dataChar = data.split(":");
         int shooter = Integer.parseInt(dataChar[0]);
         int target = Integer.parseInt(dataChar[1].trim());
-        System.out.println("[ LOG ] ----- shooter "+ shooter + " target " + target + " <-- this pair must be equal to what the client sent, otherwise there's an error");
 
-
-        //holds action msg
         String action = "";
 
         // If green player hits red player
@@ -115,17 +99,14 @@ public class EchoServer extends Thread {
                     System.out.println("[ LOG ] ----- SCORE: " + shooterCodename + " = " + shooterScore + " " + targetCodename + " = " + targetScore);
                     GameActionController.greenPlayerNameScore = shooterCodename + "    " +String.valueOf(shooterScore);
 
-                    System.out.println("[ LOG ] ----- Green-HashMap update = " + GameActionController.GreenPlayerScores);
-                    System.out.println("[ LOG ] ----- Red-HashMap update = " + GameActionController.RedPlayerScores);
+                    System.out.println("[ LOG ] ----- GREEN TEAM SCORES = " + GameActionController.GreenPlayerScores);
+                    System.out.println("[ LOG ] ----- RED TEAM SCORES = " + GameActionController.RedPlayerScores);
                     Integer greenTeamScore = GameActionController.GreenPlayerScores.values().stream().mapToInt(d-> d).sum();
                     GameActionController.greenTotalScore = String.valueOf(greenTeamScore);
-                    System.out.println("[ LOG ] ----- Green-HashMap update = greenTotalScore = "+GameActionController.greenTotalScore);
-                    //TODO:
 
-                    /*store
-                    1. codenames/individual score
-                    2. action msg "shooter_code_name hit target_code_name"
-                    * */
+
+
+
                     GameActionController.setActions(action);
 
                     GameActionController.saveInfo();
@@ -149,21 +130,16 @@ public class EchoServer extends Thread {
                     System.out.println("[ LOG ] ----- Action: " + action);
                     System.out.println("[ LOG ] ----- SCORE: " + shooterCodename + " = " + shooterScore +" "+ targetCodename + " = " + targetScore);
                     GameActionController.redPlayerNameScore = shooterCodename + "    " +String.valueOf(shooterScore);
-                    //GameActionController.greenTeamNameScore.setText(shooterCodename + "    " +String.valueOf(shooterScore));
 
 
-                    System.out.println("[ LOG ] ----- Green-HashMap update = " + GameActionController.GreenPlayerScores);
-                    System.out.println("[ LOG ] ----- Red-HashMap update = " + GameActionController.RedPlayerScores);
+
+                    System.out.println("[ LOG ] ----- GREEN TEAM SCORES = " + GameActionController.GreenPlayerScores);
+                    System.out.println("[ LOG ] ----- RED TEAM SCORES = " + GameActionController.RedPlayerScores);
                     Integer greenTeamScore = GameActionController.RedPlayerScores.values().stream().mapToInt(d-> d).sum();
                     GameActionController.redTotalScore = String.valueOf(greenTeamScore);
-                    System.out.println("[ LOG ] ----- Red-HashMap update = redTotalScore = "+GameActionController.redTotalScore);
 
-                    //TODO:
-                    /*Store
-                    1. codenames/individual score
-                    2. action msg "shooter_code_name hit target_code_name"
 
-                    * */
+
                     GameActionController.setActions(action);
 
                     GameActionController.saveInfo();
@@ -172,7 +148,6 @@ public class EchoServer extends Thread {
             }
         }
 
-        //clean up strings
         to_print = action;
         shooter = target = 0;
 

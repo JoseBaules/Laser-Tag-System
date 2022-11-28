@@ -8,6 +8,13 @@
     -fx-text-fill: white;
     -fx-font-size:  30 em;
 }
+
+#log-label{
+    -fx-font-weight:bold;
+    -fx-font-family: "United Kingdom";
+    -fx-text-fill: white;
+    -fx-font-size:  20 em;
+}
 #red-team-label{
     -fx-font-weight:bold;
     -fx-font-family: "United Kingdom";

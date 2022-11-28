@@ -73,7 +73,7 @@ public class Scene2Controller  implements Initializable
     @FXML
     void button (ActionEvent event) throws IOException
     {
-        System.out.println("Calling Button");
+
         addContinue(event);
     }
 
@@ -82,7 +82,7 @@ public class Scene2Controller  implements Initializable
     {
         if (event.getCode() == KeyCode.SHIFT)
         {
-            System.out.println("Calling Enter key");
+
             addContinue(event);
 
         }
@@ -352,8 +352,7 @@ public class Scene2Controller  implements Initializable
 
         // using for-each loop for iteration over Map.entrySet()
         for (Map.Entry<String,String> entry : redMap.entrySet()) {
-            System.out.println("Key = " + entry.getKey() +
-                    ", Value = " + entry.getValue());
+
             Player red_player = new Player();
 
             if (!((entry.getKey() == "")||(entry.getKey().contains(" ")) || (entry.getKey().isEmpty())|| (entry.getKey().chars().allMatch(Character::isWhitespace)) || (entry.getKey().chars().anyMatch(Character::isWhitespace)) ||
@@ -630,8 +629,7 @@ public class Scene2Controller  implements Initializable
 
         // using for-each loop for iteration over Map.entrySet()
         for (Map.Entry<String,String> entry : grnMap.entrySet()) {
-            System.out.println("For Green Team: Key = " + entry.getKey() +
-                    ", Value = " + entry.getValue());
+
             Player green_player = new Player();
 
             if (!((entry.getKey() == "")||(entry.getKey().contains(" ")) || (entry.getKey().isEmpty())|| (entry.getKey().chars().allMatch(Character::isWhitespace)) || (entry.getKey().chars().anyMatch(Character::isWhitespace)) ||
