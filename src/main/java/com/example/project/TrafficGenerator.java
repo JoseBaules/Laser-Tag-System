@@ -7,7 +7,7 @@ public class TrafficGenerator {
     public static List<String> getRandomKeys(List idList) {
         List<String> keys = new ArrayList<>(idList);
         Collections.shuffle(keys);
-        System.out.println("keys: " + keys);
+
         return keys;
     }
 

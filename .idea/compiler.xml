@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Project" />
+        <module name="Main_Laser_Tag_Team12_alison" />
       </profile>
     </annotationProcessing>
   </component>
