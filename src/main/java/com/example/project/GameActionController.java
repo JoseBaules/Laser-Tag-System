@@ -569,6 +569,11 @@ public class GameActionController implements Initializable {
 
     public void PreEnteredGames (ActionEvent event) throws IOException
     {
+
+    }
+    public void prueba (ActionEvent event) throws IOException
+    {
+        System.out.printf("PRRRRRR");
     }
     public void FlickSync (ActionEvent event) throws IOException
     {

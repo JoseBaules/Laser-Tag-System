@@ -138,7 +138,7 @@
             <Button layoutX="954.0" layoutY="19.0" mnemonicParsing="false" onAction="#closeGame" prefHeight="24.0" prefWidth="146.0" stylesheets="@buttonStyleSheet.css" text="F12 Close Game" />
             <Button layoutX="815.0" layoutY="18.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="119.0" stylesheets="@buttonStyleSheet.css" text="F8 View Game" />
             <Button layoutX="672.0" layoutY="18.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="119.0" stylesheets="@buttonStyleSheet.css" text="F10 Flick Sync" />
-            <Button layoutX="342.0" layoutY="17.0" mnemonicParsing="false" stylesheets="@buttonStyleSheet.css" text="F4 PreEntered Games" />
+            <Button layoutX="342.0" layoutY="17.0" mnemonicParsing="false" onAction="#prueba" stylesheets="@buttonStyleSheet.css" text="F4 PreEntered Games" />
             <Button layoutX="512.0" layoutY="18.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="134.0" stylesheets="@buttonStyleSheet.css" text="Start Game ENTER" />
          </children>
       </Pane>
